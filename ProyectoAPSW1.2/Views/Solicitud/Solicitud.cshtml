@@ -1,0 +1,284 @@
+﻿@model ProyectoAPSW1._2.Models.SolicitudModelo
+@using CaptchaMvc.HtmlHelpers
+
+<div class="contenedor">
+
+   
+    
+        <!--Menu-->
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-4">
+                <div class="container">
+                    <a href='@Url.Action("Index", "Home")#inicio' class="brand-logo">
+                        <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                    </a>
+                    <a href="#" data-target="menu-responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+                        <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+                        <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+                        <li>
+                            <a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)" i class="material-icons" style="vertical-align: middle;">person</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="menu-responsive">
+            <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+            <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+            <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+            <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+        </ul>
+
+
+    
+</div>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+
+    <div class="form-horizontal">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Solicitud de Crédito</a>
+        </h4>
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="container">
+
+
+
+
+            <div class="cuadro-solicitud">
+                <h5 class="title-personales" style="margin-bottom: 30px;">Datos Personales</h5>
+                <div class="row">
+                    <div class="col s12 m4 l4">
+
+
+                        @Html.EditorFor(model => model.Identificacion, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   @class = "datosPersonales",
+                                   @id = "identificacion",
+                                        @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%;"
+                               }
+                           })
+
+                        @Html.LabelFor(model => model.Identificacion, htmlAttributes: new { @class = "etiquetas" })
+                        @*  @Html.ValidationMessageFor(model => model.Identificacion, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="col s6 m4 l4">
+                        <div class="btnSolicitar">
+
+                            <button type='button' onclick="BuscarCliente()" class="waves-effect waves-light btn amber">Buscar</button>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col s6 m4 l4">
+                            <p id="errorId" class="ingreso-error"></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col s12 m4 l4">
+                        @Html.EditorFor(model => model.Nombre, new
+                              {
+                                  htmlAttributes = new
+                                  {
+                                      @class = "datosPersonales",
+                                      @id = "nombre",
+                                   @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%;"
+                                  }
+                              })
+
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "etiquetas" })
+                        @* @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="col s12 m4 l4">
+                        @Html.EditorFor(model => model.PrimerApellido, new
+                              {
+                                  htmlAttributes = new
+                                  {
+                                      @class = "datosPersonales",
+                                      @id = "apellido1",
+                                      @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%;"
+                                  }
+                              })
+
+                        @Html.LabelFor(model => model.PrimerApellido, htmlAttributes: new { @class = "etiquetas" })
+                        @*@Html.ValidationMessageFor(model => model.PrimerApellido, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="col s12 m4 l4">
+                        @Html.EditorFor(model => model.SegundoApellido, new
+                                  {
+                                      htmlAttributes = new
+                                      {
+                                          @class = "datosPersonales",
+                                          @id = "apellido2",
+                                          @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%;"
+                                      }
+                                  })
+
+                        @Html.LabelFor(model => model.SegundoApellido, htmlAttributes: new { @class = "etiquetas" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m4 l4">
+                        @Html.EditorFor(model => model.Telefono, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   @class = "datosPersonales",
+                                   @id = "telefono",
+                                   @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%;"
+                               }
+                           })
+
+                        @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "etiquetas" })
+                        @*  @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="col s12 m4 l4">
+                        @Html.TextBoxFor(model => model.FechaNacimiento, new
+                           {
+                              @type="date",
+                               @class = "datosPersonales",
+                               //@Value="2020-10-29",
+                               @id = "fecha",
+
+
+                               @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%;"
+                           })
+
+                        @Html.LabelFor(model => model.FechaNacimiento, htmlAttributes: new { @class = "etiquetas" })
+                        @* @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })*@
+                    </div>
+
+
+                    <div class="col s12 m4 l4">
+                        @Html.EditorFor(model => model.Correo, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "datosPersonales",
+                                       @id = "correo",
+                                       @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%;"
+                                   }
+                               })
+
+                        @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "etiquetas" })
+                        @*  @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col s12 m6 l4">
+                        @Html.EditorFor(model => model.SalarioNeto, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "datosPersonales",
+                                       @id = "salario",
+                                       @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%;"
+                                   }
+                               })
+
+                        @Html.LabelFor(model => model.SalarioNeto, htmlAttributes: new { @class = "etiquetas" })
+                        @* @Html.ValidationMessageFor(model => model.SalarioNeto, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="col s12 m4 l4">
+                        @Html.EditorFor(model => model.NombreCre, new
+                              {
+                                  htmlAttributes = new
+                                  {
+                                      @id="Nomcre",
+                                       @Value = @ViewBag.mssg3,
+                                       @class = "datosPersonales",
+                                      @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%; color:#01579b ",
+                                      @readonly = "readonly"
+                                  }
+                                   })
+
+                        @Html.LabelFor(model => model.NombreCre, htmlAttributes: new { @class = "etiquetas", @style = "color: white" })
+                        @* @Html.ValidationMessageFor(model => model.NombreCre, "", new { @class = "text-danger" })*@
+                    </div>
+                  <div class="col s12 m4 l4">
+                        @Html.EditorFor(model => model.Monto, new
+                              {
+                                  htmlAttributes = new
+                                  {
+                                     
+                                       @Value = @ViewBag.mssg1,
+                                       @class = "datosPersonales",
+                                      @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%; color:#01579b ",
+                                      @readonly = "readonly"
+                                  }
+                                   })
+
+                        @Html.LabelFor(model => model.Monto, htmlAttributes: new { @class = "etiquetas", @style = "color: white" })
+                        @* @Html.ValidationMessageFor(model => model.NombreCre, "", new { @class = "text-danger" })*@
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col s12 m4 l4">
+                        @Html.EditorFor(model => model.TasaInteres, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @Value = @ViewBag.mssg2,
+                                       @class = "datosPersonales",
+                                       @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%; color:#01579b ",
+                                       @readonly = "readonly"
+                                   }
+                                    })
+
+                        @Html.LabelFor(model => model.TasaInteres, htmlAttributes: new { @class = "etiquetas",@style = "color: white" })
+                        @* @Html.ValidationMessageFor(model => model.TasaInteres, "", new { @class = "text-danger" })*@
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col s12 m4 l4">
+                        @*@Html.MathCaptcha()*@
+                        @Html.Captcha(length: 5)
+                        <p>@ViewBag.ErrorMessage</p>
+
+                    </div>
+
+                </div>
+                <div class="btnSolicitar">
+                    <button type='submit' value="EnviarSolicitud" class="waves-effect waves-light btn amber">Enviar Solicitud</button>
+
+                </div>
+                <div class="btnSolicitar">
+                    <button type='button' value="EnviarSolicitud" class="waves-effect waves-light btn amber" onclick="SinFormailzar()">Cancelar</button>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <input type="hidden" id="usuario2" value="@ViewBag.usuario2" />
+
+    @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+}

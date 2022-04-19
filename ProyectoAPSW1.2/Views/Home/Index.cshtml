@@ -1,0 +1,439 @@
+﻿@model IEnumerable<ProyectoAPSW1._2.Models.CreditosModelo>
+
+
+
+@{
+    ViewBag.Title = "Home Page";
+
+
+
+
+
+
+
+
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0">}
+
+<div class="contenedor">
+
+
+  
+    <!--Menu-->
+    <div class="navbar-fixed">
+        <nav class="light-blue darken-4">
+            <div class="container">
+                <a href='@Url.Action("Index", "Home")#inicio' class="brand-logo">
+                    <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                </a>
+                <a href="#" data-target="menu-responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+                    <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+                    <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+
+                    <li>
+                        <a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)" i class="material-icons" style="vertical-align: middle;">person</a>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <ul class="sidenav" id="menu-responsive">
+        <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+        <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+        <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+
+        <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+    </ul>
+
+
+   
+
+
+    <!--Inicio de pagina-->
+    <div class="parallax-container">
+        <div class="parallax"> <img src="~/images/fondo.png"></div>
+        <div class="container">
+            <div class="section">
+                <section id="inicio" class="section section-inicio scrollspy">
+                    <div class="row">
+                        <div class="col s12 m12 l6">
+                            <h1 style="color: white; font-family: Ubuntu;margin-top: 2; margin-bottom: 0;">
+                                Créditos a tu
+                            </h1>
+                            <h1 style="color: white; font-family: Ubuntu; margin-top: 0;margin-bottom: 0;">alcance</h1>
+                            <h5 style="color: white; font-family: Nunito; margin-top: 0;">Haga realidad sus metas</h5>
+                            <h4 class="center">
+                                <a href="#calculadora" class="waves-effect waves-light btnColor">Calcule Aquí</a>
+                            </h4>
+                        </div>
+                        <div class="col s12 m12 l6">
+                            <img src="~/images/Chanchito.png" class="imgChanchito">
+
+                        </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="grey lighten-4 black-text center">
+        <div class="container">
+
+            <section id="creditos" class="section section-creditos scrollspy">
+
+                <div id="number" style="display:none"></div>
+
+                <h4 class="center">
+                    <a class="btnColor" style="width: auto;">Tipos de Créditos</a>
+                </h4>
+
+                <div class="owl-carousel">
+                    <div class="row">
+                        <div class="col s12 m12 l12" onmouseover="IniciarCont('Compra vivienda')" onmouseout="DetenerCont()">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="~/images/vivienda.png" alt="">
+                                </div>
+                                <div class="card-content" style="text-align: left;">
+                                    <p>Adquiere la vivienda de tus sueños con un crédito a increíbles cuotas.</p>
+                                </div>
+                                <div class="card-action" style="text-align: left;">
+
+                                    <a href="@Url.Action("Vivienda", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Compra vivienda')">Más Información</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div onmouseover="IniciarCont('Compra vehículo')" onmouseout="DetenerCont()">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="~/images/vehiculo.png">
+                                </div>
+                                <div class="card-content" style="text-align: left;">
+                                    <p>Adquiere el vehículo de tus sueños, y grandes cuotas e intereses.</p>
+                                </div>
+                                <div class="card-action" style="text-align: left;">
+                                    <a href="@Url.Action("Vehiculo", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Compra vehículo')">Más Información</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div onmouseover="IniciarCont('Viajes')" onmouseout="DetenerCont()">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="~/images/viajes.png">
+                            </div>
+                            <div class="card-content" style="text-align: left;">
+                                <p>Deja de soñar y viaja a tu destino más deseado con el mejor crédito.</p>
+                            </div>
+                            <div class="card-action" style="text-align: left;">
+                                <a href="@Url.Action("Viajes", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Viajes')">Más Información</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div onmouseover="IniciarCont('Estudios')" onmouseout="DetenerCont()">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="~/images/estudios.png" alt="">
+                                </div>
+                                <div class="card-content" style="text-align: left;">
+                                    <p>
+                                        Te prestamos para tu técnico, bachillerato, licenciatura o maestría.
+                                    </p>
+                                </div>
+                                <div class="card-action" style="text-align: left;">
+                                    <a href="@Url.Action("Estudios", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Estudios')">Más Información</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div onmouseover="IniciarCont('Salud')" onmouseout="DetenerCont()">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="~/images/salud.png">
+                                </div>
+                                <div class="card-content" style="text-align: left;">
+                                    <p>Tu salud es primordial, contamos con crédito ante una emergencia. </p>
+                                </div>
+                                <div class="card-action" style="text-align: left;">
+                                    <a href="@Url.Action("Salud", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Salud')">Más Información</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div onmouseover="IniciarCont('Unificacion')" onmouseout="DetenerCont()">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="~/images/unificacion.png">
+                                </div>
+                                <div class="card-content" style="text-align: left;">
+                                    <p>Tranquilidad pagando menos por sus deudas a cuotas increibles.</p>
+                                </div>
+                                <div class="card-action" style="text-align: left;">
+                                    <a href="@Url.Action("Unificacion", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Unificacion')">Más Información</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div onmouseover="IniciarCont('Compra maquinaria y equipo')" onmouseout="DetenerCont()">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="~/images/maquinaria.png" alt="">
+                                </div>
+                                <div class="card-content" style="text-align: left;">
+                                    <p>La eficacia de su empresa es nuestro objetivo, adquiera el mejor crédito.</p>
+                                </div>
+                                <div class="card-action" style="text-align: left;">
+                                    <a href="@Url.Action("CompraMaquinaria", null, new { area=string.Empty, controller="Principal" },Request.Url.Scheme)" onclick="RegistrarClic('Compra maquinaria y equipo')">Más Información</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div onmouseover="IniciarCont('Mejora de instalaciones')" onmouseout="DetenerCont()">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="~/images/instalaciones.png">
+                                </div>
+                                <div class="card-content" style="text-align: left;">
+                                    <p>Adapte sus instalaciones para desempeñar una mejor labor.</p>
+                                </div>
+                                <div class="card-action" style="text-align: left;">
+                                    <a href="@Url.Action("MejoraInstalaciones", null, new { area=string.Empty, controller="Principal" },Request.Url.Scheme)" onclick="RegistrarClic('Mejora de instalaciones')">Más Información</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div onmouseover="IniciarCont('Capital de trabajo')" onmouseout="DetenerCont()">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="~/images/capitalT.png" alt="">
+                                </div>
+                                <div class="card-content" style="text-align: left;">
+                                    <p>Adquiera una mayor liquidez para su negocio, y proyectando ganancias.</p>
+                                </div>
+                                <div class="card-action" style="text-align: left;">
+                                    <a href="@Url.Action("CapitalTrabajo", null, new { area=string.Empty, controller="Principal" },Request.Url.Scheme)" onclick="RegistrarClic('Capital de trabajo')">Más Información</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div onmouseover="IniciarCont('Vehiculo de trabajo')" onmouseout="DetenerCont()">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="~/images/VehiTrabajo.png">
+                                </div>
+                                <div class="card-content" style="text-align: left;">
+                                    <p>La eficacia de su empresa es nuestro objetivo, adquiera el mejor crédito. </p>
+                                </div>
+                                <div class="card-action" style="text-align: left;">
+                                    <a href="@Url.Action("VehiculoTrabajo", null, new { area=string.Empty, controller="Principal" },Request.Url.Scheme)" onclick="RegistrarClic('Vehiculo de trabajo')">Más Información</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </section>
+        </div>
+
+    </div>
+
+
+    <div class="parallax-container">
+        <div class="parallax"> <img src="~/images/fondo.png"></div>
+        <div class="container">
+            <h4 class="center">
+                <a class="btnColor" style="width: auto;">Más Relevantes</a>
+            </h4>
+            <div class="row">
+
+                <div class="col s12 m6 l3">
+                    <div class="popular">
+                        <img class="Relevantes" src="~/images/carro.png" />
+                        <h5 class="popularText">Compra Vehículo</h5>
+                        <h5 class="popularNum">+350</h5>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="popular">
+                        <img class="Relevantes" src="~/images/avion.png" />
+                        <h5 class="popularText">Viajes</h5>
+                        <h5 class="popularNum">+300</h5>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="popular">
+                        <img class="Relevantes" src="~/images/capital.png" />
+                        <h5 class="popularText">Capital de Trabajo</h5>
+                        <h5 class="popularNum">+300</h5>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="popular">
+                        <img class="Relevantes" src="~/images/activos.png" />
+                        <h5 class="popularText">Activos Productivos</h5>
+                        <h5 class="popularNum">+300</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @* Calculadora *@
+    <div class="grey lighten-4 black-text center">
+        <div class="container">
+            <div class="section">
+                <section id="calculadora" class="section section-calculadora scrollspy">
+
+                    <div class="row">
+                        <h4 class="center">
+                            <a class="btnColor" style="width: auto;">Calculadora de Créditos</a>
+                        </h4>
+                        <h5 style="color: #01579b;">Seleccione el tipo de crédito</h5>
+                        <br>
+
+                        <!--<div class="col s6">-->
+                            @*<a class="waves-effect waves-light btn light-blue darken-4">Personal</a>*@
+                            @*<button type="button" onclick="location.href='@Url.Action("Creditos","Home",new {categoria = "Personal"})'" class="waves-effect waves-light btn light-blue darken-4">Personal</button>*@
+
+                            <!--<button type="button" onclick="ListarCreditos('Personal');" class="waves-effect waves-light btn light-blue darken-4">Personal</button>
+
+                        </div>
+
+                        <div class="col s6">-->
+                            @*<a class="waves-effect waves-light btn light-blue darken-4">PYMES</a>*@
+                            @* <button type="button" onclick="location.href='@Url.Action("Creditos","Home",new {categoria = "Pymes"})'" class="waves-effect waves-light btn light-blue darken-4">PYMES</button>*@
+                            <!--<button type="button" onclick="ListarCreditos('Pymes');" class="waves-effect waves-light btn light-blue darken-4">PYMES</button>
+                        </div>-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="containerCalc">
+
+        <div class="row">
+            <div class="col s12 m6 l6">
+                <div class=back-Calcu>
+                    <h5 class="title-datos">Ingrese los datos solicitados</h5>
+
+                    <select id="cre" name="cre" class="browser-default" onchange="">
+                        <option disabled selected>Tipo de Crédito</option>
+                        @if (Model != null)
+                            {
+
+                                foreach (var item in Model)
+                                {
+                                    <option>@item.NombreCre</option>
+                                }
+                            }
+
+                   
+
+
+                    </select>
+
+                    <select id="moneda" name="moneda" onchange="seleccionarCredito();" class="browser-default">
+                        <option disabled selected>Moneda</option>
+                        <option>Colones</option>
+                        <option>Dolares</option>
+                    </select>
+
+                    <p id="LimitesMonto" class="ingreso"></p>
+
+                    <input id="monto" name="monto" type="text" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" class=" ingreso"
+                           placeholder="Monto Solicitado">
+
+                    <p class="ingreso-error" id="montoe"></p>
+
+                    <p id="LimitesPlazo" class="ingreso"></p>
+
+                    <input type="number" class="ingreso" id="plazo" name="plazo"
+                           placeholder="Plazo (meses)">
+
+                    <p class="ingreso-error" id="plazoe"></p>
+
+                    <input type="text" id="tasa" name="tasa" class="ingreso"
+                           placeholder="Tasa Interes (%)" readonly>
+
+                    <p class="ingreso-error" id="error"></p>
+
+                    <div class="btnDatos">
+                        <a class="waves-effect waves-light btn light-blue darken-4" onclick="MontoCuota()">Calcular Crédito</a>
+                    </div>
+
+                    <h5 class="txtCuota-msj">Su cuota mensual a cancelar es</h5>
+                    <h5 class="txtCuota" id="montofinal" name="montofinal" style="font-size: 50px;"></h5>
+
+                    <div class="btnDatos">
+                        @* <button type="button" onclick="location.href='@Url.Action("Solicitud","Solicitud",new {monto = "monto"})'" class="waves-effect waves-light btn light-blue darken-4">PYMES</button>*@
+                        @*<a href="solicitud.html"
+                               class="waves-effect waves-light btn light-blue darken-4">
+                                Solicitar
+                                crédito
+                            </a>*@
+                        <button type='button' id="solicitar" onclick="SoliHref()" class="waves-effect waves-light btn light-blue darken-4" style="display: none;">
+                            Solicitar
+                            crédito
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col s6 m6 l6">
+                <img src="~/images/calc.png" class="img-Calc">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <input type="hidden" id="user" value="@ViewBag.user" />
+
+    @section Scripts{
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $(".owl-carousel").owlCarousel({
+                    loop: true,
+                    autoplay: true,
+                    autoplayTimeout: 2000, //2000ms = 2s;
+                    autoplayHoverPause: true,
+                    responsiveClass: true,
+                    responsive: {
+                        0: {
+                            items: 1,
+                        },
+                        600: {
+                            items: 2,
+                        },
+                        1000: {
+                            items: 3,
+                        }
+                    }
+                });
+            });
+        </script>
+
+
+    }

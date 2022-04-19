@@ -1,0 +1,98 @@
+﻿
+<div class="contenedor">
+
+    @if (@ViewBag.rol == 1)
+    {
+        <!--Menu-->
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-4">
+                <div class="container">
+                    <a href="@Url.Action("Index", "Home")#inicio" class="brand-logo">
+                        <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                    </a>
+                    <a href="#" data-target="menu-responsive" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="@Url.Action("Login", "Acceso")" i class="material-icons"
+                               style="vertical-align: middle;">exit_to_app</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="menu-responsive">
+            <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+            <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+            <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+        </ul>
+
+
+    }
+</div>
+<div class="contenedor">
+    <!--Menu-->
+
+
+
+    <ul class="sidenav" id="menu-responsive">
+        <li><a href="tramitador.html">Inicio</a></li>
+        <li><a href="solicitudes.html">Solicitudes</a></li>
+        <li><a href="tendencias.html">Tendencias</a></li>
+        <li><a href="creditos.html">Créditos</a></li>
+        <li><a href="usuarios.html">Usuarios</a></li>
+        <li><a href="index.html">Cerrar Sesión</a></li>
+    </ul>
+
+
+    <div class="row">
+        <div class="col s12 m12 l6">
+            <div class="nav-wrapper">
+
+                <a href="@Url.Action("Principal2", "Principal")" class="breadcrumb">Inicio</a>
+                <a href="@Url.Action("MenuSolicitudes", "Tramitador")" class="breadcrumb">Solicitudes</a>
+
+            </div>
+        </div>
+
+        <div class="col s12 m12 l6 center">
+            <ul>
+                <a i class="material-icons" style="vertical-align: middle; color: white;">person</a>
+                <a style="color: white;">@ViewBag.mssg4</a>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="cuadroSoli">
+    <h4 class="center">
+        <a class="btnColor">Solicitudes</a>
+    </h4>
+    <div class="container" style="text-align: center">
+        <div class="row">
+            <div class="col s6 m6 l4">
+                <a href="@Url.Action("Tramite", "Tramitador")"><img src="~/images/tramite.png" class="botonAdm"></a>
+                <div class="etiquetasBotones">En Trámite</div>
+            </div>
+            <div class="col s6 m6 l4">
+                <a href="@Url.Action("Aprobadas", "Tramitador")"><img src="~/images/aprobadas.png" class="botonAdm"></a>
+                <div class="etiquetasBotones">Aprobadas</div>
+            </div>
+            <div class="col s6 m6 l4">
+                <a href="@Url.Action("Denegadas", "Tramitador")"><img src="~/images/denegado1.jpg" class="botonAdm"></a>
+                <div class="etiquetasBotones">Denegados</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cuadroModulo">
+    <p>
+        Este módulo de configuración de solicitudes, tiene como objetivo administrar créditos
+        pendientes y mostrar el historial de aprobados.
+        El acceso a este módulo es exclusivo para el tramitador
+    </p>
+</div>

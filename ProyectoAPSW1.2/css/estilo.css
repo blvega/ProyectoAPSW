@@ -1,0 +1,720 @@
+﻿
+
+
+.contenedor {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.relevantes {
+    width: 100%;
+    align-content: center;
+}
+
+.btnColor {
+    color: #000000;
+    background-color: #ffc107;
+    width: auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 50%;
+    border-radius: 60px;
+    padding: 6px 32px;
+    font-family: Nunito;
+    font-weight: bold;
+}
+
+
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+
+
+.popular {
+    background: #428bca00;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.493);
+    margin: 10px;
+}
+
+
+    .popular:hover {
+        color: black;
+        background-color: #ffc1079f;
+    }
+
+.popularText {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.popularNum {
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+.btn-calculadora:hover {
+    color: black;
+    background-color: #01579b;
+}
+
+.back-Calcu {
+    width: 500px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.308);
+    align-items: center;
+    padding-top: 14px;
+    border-radius: 30px;
+    padding-bottom: 20px
+}
+
+.pie {
+    background-color: #01579b;
+    color: white;
+    height: 100px;
+    width: 100%;
+    clear: both;
+    margin-top: auto;
+    position: relative;
+}
+
+.pie-text {
+    color: white;
+    font-family: Nunito;
+    font-size: 18px;
+    padding-top: 40px;
+}
+
+.title-datos {
+    color: #01579b;
+    text-align: center;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 35px;
+    padding-top: 14px;
+}
+
+.section-Calc {
+    padding-top: 2rem;
+}
+
+.placeholder-Datos {
+    color: #01579b;
+    width: 500px;
+}
+
+
+
+.btnDatos {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.txtCuota {
+    text-align: center;
+    font-family: Nunito;
+    font-weight: 800;
+    color: #01579b;
+    font-size: 60px;
+}
+
+.txtCuota-msj {
+    text-align: center;
+    font-family: Nunito;
+    font-weight: 800;
+    color: #01579b;
+}
+
+.browser-default {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    font-family: Nunito;
+    color: #01579b;
+    font-weight: bold;
+}
+
+.ingreso {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    font-family: Nunito;
+    color: #01579b;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+    .ingreso::placeholder {
+        color: #01579b;
+        padding-left: 2%;
+        font-size: 15px;
+    }
+
+
+input[type=text].ingreso {
+    background-color: white;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+input[type=number].ingreso {
+    background-color: white;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+
+
+body {
+    background-image: url(../images/fondo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+}
+
+.cuadro-solicitud {
+    width: 100%;
+    height: auto;
+    background: #ffffff1e;
+    border-radius: 30px;
+    padding-bottom: 5%;
+}
+
+.ingreso-error {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    font-family: Nunito;
+    color: #b71c1c;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+
+.title-personales {
+    color: white;
+    text-align: center;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 14px;
+}
+
+.contenido {
+    width: 70%;
+    height: 1000vh;
+    background-color: #999;
+    /* Esto equilibria lo del aside */
+    position: relative;
+    top: 0;
+    left: 30%;
+}
+
+.Relevantes {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    width: 150px;
+}
+
+.card {
+    margin: auto;
+    max-width: 300px;
+    margin-bottom: 25px;
+}
+
+.btnCalcular {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #01579b;
+    margin-right: 24px;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.img-Cred {
+    margin-top: 5px;
+    height: 600px;
+    margin-left: 10%;
+}
+
+
+
+
+.datosPersonales {
+    width: 100%;
+    margin: auto;
+    font-family: Nunito;
+    color: #01579b;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.etiquetas {
+    color: white;
+    margin-left: 5%;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1px;
+}
+
+.btnSolicitar {
+    text-align: center;
+    margin-top: 20px;
+    font-family: Nunito;
+    font-weight: bold;
+}
+
+.aboutCredit {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: Nunito;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.titleCredits {
+    color: white;
+    font-family: Nunito;
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 5%;
+}
+
+.titleCredits1 {
+    color: white;
+    font-family: Nunito;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+.cuadro-creditos {
+    width: 100%;
+    height: auto;
+    background: #ffffff1e;
+    border-radius: 30px;
+    padding-top: 5px;
+    text-indent: center;
+    padding-bottom: 5%;
+}
+
+.img-Cred1 {
+    margin-top: 5px;
+    height: 600px;
+    margin-left: 10%;
+}
+
+
+.cuadro-login {
+    width: 300px;
+    height: auto;
+    background: #ffffff1e;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+}
+
+.datosLogin {
+    font-family: Nunito;
+    color: #ffffff;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+}
+
+.logoLogin {
+    width: 200px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+
+.btnIngresar {
+    text-align: center;
+    margin-top: 50px;
+    font-family: Nunito;
+    font-weight: bold;
+}
+
+.btnOlvido {
+    text-align: center;
+    margin-top: 20px;
+    font-family: Nunito;
+    font-weight: bold;
+}
+
+
+
+.nav-wrapper {
+    margin-left: 10%;
+    padding-top: 20px;
+}
+
+.breadcrumb {
+    font-size: 15px;
+}
+
+
+.cuadroAdm {
+    width: 800px;
+    height: 300px;
+    background: #ffffff1e;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cuadroModulo {
+    width: 50%;
+    background: #ffffff1e;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    font-family: Nunito;
+    font-weight: 350;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.bienvenidoTra {
+    color: white;
+    font-size: 18px;
+    padding-left: 20%;
+    font-family: Nunito;
+    font-weight: 500;
+}
+
+
+.nombreTramitador {
+    color: white;
+    font-size: 18px;
+    font-family: Nunito;
+    font-weight: bold;
+}
+
+.botonAdm {
+    width: 100px;
+    border-radius: 10px;
+    box-shadow: 5px 5px #00000033;
+}
+
+.etiquetasBotones {
+    color: white;
+    font-size: 15px;
+    align-items: center;
+    top: 10px;
+    left: 10px;
+}
+
+label.etiquetasBotones {
+    margin-left: 12px;
+}
+
+div .nav-wrapper {
+    padding-left: 50px;
+}
+
+.cuadroAdm {
+    width: 800px;
+    height: 300px;
+    background: #ffffff1e;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cuadroSoli {
+    width: 50%;
+    height: 50%;
+    background: #ffffff1e;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+}
+
+.container1 {
+    padding-left: 220px;
+    padding-right: 150px;
+    align-items: center;
+    justify-content: center;
+}
+
+.botonEtiquetas {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+    width: 100px;
+    background: transparent;
+    padding-left: 12px;
+}
+
+
+@media screen and (min-width: 1025px) {
+    #columna1, #columna2, #columna3 {
+        float: left;
+        width: 33%;
+    }
+}
+
+.container2 {
+    padding-left: 50px;
+    width: 300px;
+}
+
+.inputbusqueda {
+    width: 100%;
+    margin: auto;
+    font-family: Nunito;
+    color: #01579b;
+    font-weight: bold;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    height: 15px;
+    margin-left: 15%;
+}
+
+    .inputbusqueda::placeholder {
+        color: #01579b;
+    }
+
+.infoBusqueda {
+    color: #01579b;
+}
+
+.infoBusqueda2 {
+    font-family: Nunito;
+    color: #01579b;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+select.infoBusqueda2 {
+    display: block;
+}
+
+.infoTablas {
+    color: white;
+}
+
+
+.tituloTabla {
+    background-color: #01579b;
+    color: white;
+}
+
+.tablas {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.cuadroTablas1 {
+    width: 100%;
+    height: auto;
+    background: #ffffff1e;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.modal-content {
+    width: 100%;
+    background-image: url(/images/fondo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+
+
+.modal {
+    width: 50%;
+    height: auto;
+    color: white;
+}
+
+.modal .modal-footer {
+        background-color: #01579b;
+        text-align: right;
+        color: white;
+}
+
+.imgChanchito {
+    width: 500px;
+    margin: 80;
+}
+
+.img-Calc {
+    width: 500px;
+    margin: 80;
+    padding-top: 10%;
+}
+
+.containerCalc {
+    background-image: url(/images/fondo1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    padding-top: 1%;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 576px) {
+    .imgChanchito {
+        display: none;
+    }
+
+    .img-Calc {
+        display: none;
+    }
+
+    .back-Calcu {
+        width: 350px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cuadro-creditos {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: auto;
+        padding-bottom: 10%;
+    }
+
+    .breadcrumb {
+        font-size: 100%;
+    }
+
+    div .nav-wrapper {
+        padding-left: 1%;
+    }
+
+    .nav-wrapper {
+        display: none;
+    }
+
+    .btnColor {
+        font-size: 50%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .imgChanchito {
+        display: none;
+    }
+
+    .img-Calc {
+        display: none;
+    }
+
+    .img-Cred1 {
+        display: none;
+    }
+
+    .img-Cred {
+        display: none;
+    }
+
+    .nav-wrapper {
+        display: none;
+    }
+
+
+    .back-Calcu {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cuadro-creditos {
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 10%;
+    }
+
+    .btnColor {
+        font-size: 50%;
+    }
+
+    .titleCredits {
+        color: white;
+        font-family: Nunito;
+        font-weight: 600;
+        padding-left: 5%;
+    }
+
+    .cuadroModulo {
+        font-size: 100%;
+    }
+
+    .titleCredits1 {
+        color: white;
+        font-family: Nunito;
+        align-items: center;
+    }
+
+    .cuadroSoli {
+        width: 90%;
+        height: 50%;
+        background: #ffffff1e;
+        border-radius: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1%;
+    }
+
+    .cuadroModulo {
+        width: 90%;
+    }
+}
+
+
+.etiquetas2 {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+}

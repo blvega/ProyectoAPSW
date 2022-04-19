@@ -1,0 +1,280 @@
+﻿
+@model IEnumerable<ProyectoAPSW1._2.Models.CreditosModelo>
+
+
+<div class="contenedor">
+    <!--Menu-->
+    @if (@ViewBag.rol == 1)
+    {
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-4">
+                <div class="navbar-wrapper">
+
+                    <div class="container">
+                        <a href="@Url.Action("Index", "Home")" class="brand-logo">
+                            <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                        </a>
+                        <a href="#" data-target="menu-responsive" class="sidenav-trigger">
+                            <i class="material-icons">menu</i>
+                        </a>
+                        <ul class="right hide-on-med-and-down">
+                            <li>
+                                <a href="@Url.Action("Login", "Acceso")" i class="material-icons"
+                                   style="vertical-align: middle;">exit_to_app</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+        <ul class="sidenav" id="menu-responsive">
+            <li><a href="@Url.Action("Principal2", "Principal")">Inicio</a></li>
+            <li><a href="@Url.Action("Solicitudes", "Tramitador ")">Solicitudes</a></li>
+            <li><a href="@Url.Action("Tendencias", "Principal")">Tendencias</a></li>
+            <li><a href="@Url.Action("ConfCreditos", "Tramitador")">Créditos</a></li>
+            <li><a href="@Url.Action("TramitadorUsuarios", "Tramitador")">Usuarios</a></li>
+            <li><a href="@Url.Action("Index", "Home")">Cerrar Sesión</a></li>
+        </ul>
+
+    }
+
+
+<div class="row">
+    <div class="col s12 m12 l6">
+        <div class="nav-wrapper">
+            <a href="@Url.Action("Principal2", "Principal")" class="breadcrumb">Inicio</a>
+            <a href="@Url.Action("ConfCreditos", "Tramitador")" class="breadcrumb">Configuración Creditos</a>
+        </div>
+    </div>
+
+
+    <div class="col s12 m12 l6 center">
+        <ul>
+            <a i class="material-icons" style="vertical-align: middle; color: white;">person</a>
+            <a style="color: white;">@ViewBag.mssg</a>
+        </ul>
+    </div>
+   </div>
+</div>
+
+<div class="container">
+    <div class="cuadroTablas1">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Configuración Créditos</a>
+        </h4>
+        <div class="row">
+            <div class="col s6 m6 l3">
+                <div class="infoBusqueda">
+                    <input type="text" class="inputbusqueda" id="valor" style=" background-color: #ffffffe6;"
+                           placeholder="Buscar nombre de crédito">
+                </div>
+            </div>
+
+          
+
+            <div class="col s12 m12 l3 center">
+
+                <a onclick=" BuscarCredictosConf()" class="waves-effect waves-light light-blue darken-4 btn">Buscar</a>
+
+                <a class="waves-effect waves-light btn modal-trigger green" href="#modalAgregarCredito">Nuevo</a>
+            </div>
+
+        </div>
+
+
+        <div class="tablas"  id="tablaCreditos">
+            <table class="highlight centered responsive-table">
+                <thead>
+                    <tr class="tituloTabla">
+
+                        <th>Nombre</th>
+                        <th>Tasa Colones</th>
+                        <th>Tasa Dolares</th>
+                        <th>Plazos Mínimos</th>
+                        <th>Plazos Máximos</th>
+                        <th>Monto Mínimos</th>
+                        <th>Monto Máximo</th>
+                        <th>Acción</th>
+
+                    </tr>
+                </thead>
+
+                <tbody class="infoTablas">
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreCre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TasaColones)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TasaDolares)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MinimoPlazo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaximoPlazo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MinimoMonto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaximoMonto)
+                        </td>
+
+
+                        <td>
+                           
+                            <a onclick="ModalEditarCreditoConf('@item.NombreCre')" i class="material-icons modal-trigger"
+                               style="vertical-align: middle; color: white">edit</a>
+                        </td>
+
+                    </tr>
+
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-12 center text-center">
+            <span class="left" id="total_reg"></span>
+            <ul class="pagination pager" id="myPager"></ul>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="modalAgregarCredito" class="modal">
+    <div class="modal-content">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Nuevo crédito</a>
+        </h4>
+        <form class="col s12 m6 l6">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <input placeholder="Nombre" id="nomcre" type="text" class="validate" style="color: white;">
+                    <label for="first_name">Nombre</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Tasa Interes en colones" id="tasacolones" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Tasa colones</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Tasa Interes en dolares" id="tasadolares" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Tasa dolares</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Plazo Mínimo" id="plazomin" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Plazo mínimo</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Plazo Máximo" id="plazomax" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Plazo máximo</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <input placeholder="Monto Mínimo" id="montomin" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Monto mínimo</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Monto Máximo" id="montomax" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Monto máximo</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a onclick="RegistroCreditos()" class="modal-close btn-small green">Guardar</a>
+        <a href="#!" class="modal-close btn-small red">Cancelar</a>
+    </div>
+</div>
+
+
+
+
+<div id="modalModificarCredito2" class="modal">
+    <div class="modal-content">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Modificar Crédito</a>
+        </h4>
+        <form class="col s12 m6 l6">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <input placeholder="Nombre" id="nomcre2" type="text" class="validate" style="color: white;">
+                    <label for="first_name">Nombre credito</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Tasa Interes en colones" id="tasacolones2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Tasa en colones</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Tasa Interes en dolares" id="tasadolares2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Tasa en dolares</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Plazo Mínimo" id="plazomin2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Plazo mínimo</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Plazo Máximo" id="plazomax2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Plazo Máximo</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <input placeholder="Monto Mínimo" id="montomin2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Monto mínimo</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Monto Máximo" id="montomax2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Monto máximo</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a onclick="ModificarCreditosConf()" class="modal-close btn-small green">Guardar</a>
+        <a href="#!" class="modal-close btn-small red">Cancelar</a>
+    </div>
+</div>
+
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+
+            var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+        });
+
+
+  
+
+    $(document).ready(function () {
+        $('#tablaCreditos').pageMe({
+            pagerSelector: '#myPager',
+            activeColor: 'blue',
+            prevText: 'Anterior',
+            nextText: 'Siguiente',
+            showPrevNext: true,
+            hidePageNumbers: false,
+            perPage: 5
+        });
+    });
+
+</script>
+
+

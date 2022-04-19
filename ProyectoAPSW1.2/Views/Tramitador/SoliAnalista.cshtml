@@ -1,0 +1,314 @@
+﻿@model IEnumerable<ProyectoAPSW1._2.Models.TramiteModelo>
+
+<div class="contenedor">
+
+    @if (@ViewBag.rol == 2)
+    {
+        <!--Menu-->
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-4">
+                <div class="container">
+                    <a href="@Url.Action("Index", "Home")#inicio" class="brand-logo">
+                        <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                    </a>
+                    <a href="#" data-target="menu-responsive" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="@Url.Action("Login", "Acceso")" i class="material-icons"
+                               style="vertical-align: middle;">exit_to_app</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="menu-responsive">
+            <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+            <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+            <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+        </ul>
+
+
+    }
+</div>
+
+<div class="contenedor">
+    <!--Menu-->
+
+
+    <div class="row">
+        <div class="col s12 m12 l6">
+            <div class="nav-wrapper">
+
+                <a href="@Url.Action("Principal3", "Principal")" class="breadcrumb">Inicio</a>
+                <a href="@Url.Action("SoliAanalista", "Tramitador")" class="breadcrumb">Solicitudes</a>
+               
+
+            </div>
+        </div>
+
+        <div class="col s12 m12 l6 center">
+            <ul>
+                <a i class="material-icons" style="vertical-align: middle; color: white;">person</a>
+                <a style="color: white;">@ViewBag.mssg</a>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="cuadroTablas1">
+
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Asignadas</a>
+        </h4>
+        <div class="row">
+            <div class="col s6 m6 l3">
+                <div class="infoBusqueda">
+                    <input type="text" class="inputbusqueda" style=" background-color: #ffffffe6;"
+                           placeholder="Buscar">
+                </div>
+            </div>
+
+            <div class="col s6 m6 l3">
+                <select class="infoBusqueda2">
+                    <option value="" disabled selected>Herramienta Búsqueda</option>
+                    <option value="1">Id Crédito</option>
+                    <option value="2">Identificación</option>
+                    <option value="3">Nombre</option>
+                </select>
+            </div>
+
+            <div class="col s12 m12 l3 center">
+                <a class="waves-effect waves-light light-blue darken-4 btn">Limpiar</a>
+
+            </div>
+
+        </div>
+
+
+        <label id="error" name="error" for="first_name" class="etiquetas2"></label>
+
+
+
+        <div class="tablas">
+            <table class="highlight centered responsive-table">
+                <thead>
+                    <tr class="tituloTabla">
+                        <th>N° Solicitud</th>
+                        <th>Fecha</th>
+                        <th>Identificación</th>
+                        <th>Nivel de endeudamiento</th>
+                        <th>Monto Solicitado</th>
+                        <th>Tipo de Crédito</th>
+                        <th>Tasa de interés (%)</th>
+                        <th>Estado</th>
+                        <th>Responsable</th>
+                        <th>Comentario</th>
+                        <th>Cambiar Estado</th>
+
+                    </tr>
+                </thead>
+
+                <tbody class="infoTablas">
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+
+                            if (item.Endeudamiento <= 30)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.idSolicitud)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fecha)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Identificacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Endeudamiento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Monto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NombreCre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TasaInteres)
+                                    </td>
+                                    <td>
+                                        @Html.ValueFor(modelItem => item.Estado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Responsable)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Comentario)
+                                    </td>
+                                    <td style=" background-color:rgb(144, 238, 144)">
+
+                                        <a onclick="ModalAsigAnalistaEstado(@item.idSolicitud)" i class="material-icons modal-trigger"
+                                           style="vertical-align: middle; color: white; ">edit</a>
+                                    </td>
+                                </tr>
+                            }
+                            else if (item.Endeudamiento > 30 && item.Endeudamiento <= 60)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.idSolicitud)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fecha)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Identificacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Endeudamiento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Monto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NombreCre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TasaInteres)
+                                    </td>
+                                    <td>
+                                        @Html.ValueFor(modelItem => item.Estado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Responsable)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Comentario)
+                                    </td>
+                                    <td style="background-color: rgb(238, 232, 170)">
+                                        <a onclick="ModalAsigAnalistaEstado(@item.idSolicitud)" i class="material-icons modal-trigger"
+                                           style="vertical-align: middle; color: white">edit</a>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.idSolicitud)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fecha)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Identificacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Endeudamiento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Monto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NombreCre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TasaInteres)
+                                    </td>
+                                    <td>
+                                        @Html.ValueFor(modelItem => item.Estado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Responsable)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Comentario)
+                                    </td>
+                                    <td style="background-color: rgb(230, 97, 89)">
+                                        <a onclick="ModalAsigAnalistaEstado(@item.idSolicitud)" i class="material-icons modal-trigger"
+                                           style="vertical-align: middle; color: white">edit</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Aprobar o denegar solicitudes</a>
+        </h4>
+        <form class="col s12">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <input placeholder="Id de Solicitud" id="idPrueba" name="idPrueba" type="text" class="validate"
+                           style="color: white;" readonly> <label for="first_name" class="etiquetas2">N° Solicitud</label>
+
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Fecha:" id="sfecha" name="sfecha" type="date" class="validate"
+                           style="color: white;" readonly>
+                    <label for="first_name" class="etiquetas2">Fecha</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Identificación" id="sid" name="sid" type="text" class="validate"
+                           style="color: white;" readonly> <label for="first_name" class="etiquetas2">Identificación</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Endeudamiento" id="sende" name="sende" type="text" class="validate"
+                           style="color: white;" readonly> <label for="first_name" class="etiquetas2">Endeudamiento</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Monto" id="smonto" name="smonto" type="text" class="validate"
+                           style="color: white;" readonly> <label for="first_name" class="etiquetas2">Monto solicitado</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Tipo de crédito" id="scredito" type="text" class="validate"
+                           style="color: white;" readonly> <label for="first_name" class="etiquetas2">Tipo de crédito</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Tipo de crédito" id="stasa" type="text" class="validate"
+                           style="color: white;" readonly> <label for="first_name" class="etiquetas2">Tasa de interés (%)</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Tipo de crédito" id="sresponsable" type="text" class="validate"
+                           style="color: white;" readonly> <label for="first_name" class="etiquetas2">Responsable</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <input id="scomentario" type="text" class="validate"
+                           style="color: white;"> <label for="first_name" class="etiquetas2">Comentario</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <br />
+                    <select id="sestado" class="infoBusqueda2">
+                        <option value="" disabled selected>Seleccione el estado de solicitud...</option>
+                        <option value="Aprobado">Aprobado</option>
+                        <option value="Denegado">Denegado</option>
+
+                    </select>
+
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a onclick="AsignarEstado()" class="modal-close btn-small green">Guardar</a>
+        <a href="#!" class="modal-close btn-small red">Cancelar</a>
+    </div>
+</div>

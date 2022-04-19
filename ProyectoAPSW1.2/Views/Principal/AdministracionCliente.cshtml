@@ -1,0 +1,273 @@
+﻿
+@model IEnumerable<ProyectoAPSW1._2.Models.ClientesModelo>
+
+
+<div class="contenedor">
+
+    @if (@ViewBag.rol == 3)
+    {
+        <!--Menu-->
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-4">
+                <div class="container">
+                    <a href="@Url.Action("Index", "Home")#inicio" class="brand-logo">
+                        <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                    </a>
+                    <a href="#" data-target="menu-responsive" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="@Url.Action("Login", "Acceso")" i class="material-icons"
+                               style="vertical-align: middle;">exit_to_app</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="menu-responsive">
+            <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+            <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+            <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+            <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+        </ul>
+
+
+    }
+
+    <div class="row">
+        <div class="col s12 m12 l6">
+            <div class="nav-wrapper">
+                <a href="@Url.Action("Principal", "Principal")" class="breadcrumb">Inicio</a>
+                <a href="@Url.Action("AdministracionCliente", "Principal")" class="breadcrumb">Actualizar datos personales</a>
+
+            </div>
+        </div>
+
+
+        <div class="col s12 m12 l6 center">
+            <ul>
+                <a i class="material-icons" style="vertical-align: middle; color: white;">person</a>
+                <a style="color: white;">@ViewBag.mssg</a>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="cuadroTablas1">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Información Personal</a>
+        </h4>
+    
+
+
+        <div class="tablas" cellpadding="1" cellspacing="1" id="tablaClientes">
+            <table class="highlight centered responsive-table">
+                <thead>
+                    <tr class="tituloTabla">
+                        <th>Identificación</th>
+                        <th>Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Teléfono</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+
+                    </tr>
+                </thead>
+
+                <tbody class="infoTablas">
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Identificacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PrimerApellido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SegundoApellido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Correo)
+                                </td>
+
+
+                                <td>
+                                    <a onclick="MasInformacionClienteAdmi2(@item.Identificacion)" i class="material-icons modal-trigger"
+                                       style="vertical-align: middle; color: white;">more_horiz</a>
+                                    <a onclick="ModalEditarCliente2(@item.Identificacion)" i class="material-icons modal-trigger"
+                                       style="vertical-align: middle; color: white">edit</a>
+                                </td>
+
+                            </tr>
+
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-12 center text-center">
+            <span class="left" id="total_reg"></span>
+            <ul class="pagination pager" id="myPager"></ul>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<div id="modalMasInformacionCliAdmin2" class="modal">
+    <div class="modal-content">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Más información </a>
+        </h4>
+        <form class="col s12 m6 l6">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <input placeholder="Identificación" id="idcli2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Identificación</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Nombre" id="nomcli2" type="text" class="validate" style="color: white;">
+                    <label for="first_name">Nombre</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Primer Apellido" id="p1cli2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Primer Apellido</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Segundo Apellido" id="p2cli2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Segundo Apellido</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <input placeholder="Teléfono" id="telecli2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Teléfono</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Correo" id="corcli2" type="text" class="validate" style="color: white;">
+                    <label for="first_name">Correo</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <input placeholder="Fecha de nacimiento" id="fechacli2" type="date" class="validate" style="color: white;">
+                    <label for="first_name">Fecha de nacimiento</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <input placeholder="Salario Neto" id="salariocli2" type="text" class="validate" style="color: white;">
+                    <label for="first_name">Salario Neto</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Endeudamiento" id="endeucli2" type="text" class="validate" style="color: white;">
+                    <label for="first_name">Endeudamiento</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <input placeholder="Contraseña" id="contcli2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Contraseña</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <input placeholder="Rol" id="rolcli2" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Rol</label>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+
+        <a href="#!" class="modal-close btn-small red">Cancelar</a>
+    </div>
+</div>
+
+<div id="modalModificarCliente2" class="modal">
+    <div class="modal-content">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Modificar Cliente</a>
+        </h4>
+        <form class="col s12 m6 l6">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <input placeholder="Identificación" id="idcli3" readonly type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Identificación</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Nombre" id="nomcli3" type="text" class="validate" style="color: white;">
+                    <label for="first_name">Nombre</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Primer Apellido" id="p1cli3" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Primer Apellido</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Segundo Apellido" id="p2cli3" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Segundo Apellido</label>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <input placeholder="Teléfono" id="telecli3" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Teléfono</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Correo" id="corcli3" type="text" class="validate" style="color: white;">
+                    <label for="first_name">Correo</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Fecha de nacimiento" id="fechacli3" type="date" class="validate" style="color: white;">
+                    <label for="first_name">Fecha nacimiento</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Contraseña" id="contcli3" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Contraseña</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Salario Neto" id="salariocli3" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Salario Neto</label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <input placeholder="Endeudamiento" id="endeudamientocli3" type="text" class="validate"
+                           style="color: white;"> <label for="first_name">Endeudamiento</label>
+                </div>
+              
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a onclick="ModificarClientesConf2()" class="modal-close btn-small green">Guardar</a>
+        <a href="#!" class="modal-close btn-small red">Cancelar</a>
+    </div>
+</div>
+
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+
+            var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+        });
+
+
+
+
+</script>

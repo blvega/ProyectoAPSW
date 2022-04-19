@@ -1,0 +1,866 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BDProyectoAPSWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clics">
+          <Key>
+            <PropertyRef Name="idClics" />
+          </Key>
+          <Property Name="idClics" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumClics" Type="int" Nullable="false" />
+          <Property Name="FechaIndicador" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Identificacion" />
+          </Key>
+          <Property Name="Identificacion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="SalarioNeto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Endeudamiento" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Creditos">
+          <Key>
+            <PropertyRef Name="NombreCre" />
+          </Key>
+          <Property Name="NombreCre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaximoMonto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MinimoMonto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MaximoPlazo" Type="int" Nullable="false" />
+          <Property Name="MinimoPlazo" Type="int" Nullable="false" />
+          <Property Name="TasaColones" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TasaDolares" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="idModulo" />
+          </Key>
+          <Property Name="idModulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operaciones">
+          <Key>
+            <PropertyRef Name="idOperaciones" />
+          </Key>
+          <Property Name="idOperaciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreOperacion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="idModulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Posicionamiento">
+          <Key>
+            <PropertyRef Name="idPosicionamiento" />
+          </Key>
+          <Property Name="idPosicionamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumPosicionamiento" Type="int" Nullable="false" />
+          <Property Name="FechaIndicador" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol_operacion">
+          <Key>
+            <PropertyRef Name="idRolOperacion" />
+          </Key>
+          <Property Name="idRolOperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="idOperacion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SinFormalizar">
+          <Key>
+            <PropertyRef Name="idSinFormalizar" />
+          </Key>
+          <Property Name="idSinFormalizar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Identificacion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FechaIndicador" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SinRegistro">
+          <Key>
+            <PropertyRef Name="idSinRegistro" />
+          </Key>
+          <Property Name="idSinRegistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumUsuarios" Type="int" Nullable="false" />
+          <Property Name="FechaIndicador" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Solicitudes">
+          <Key>
+            <PropertyRef Name="idSolicitud" />
+          </Key>
+          <Property Name="idSolicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identificacion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NombreCre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TasaInteres" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" />
+          <Property Name="Responsable" Type="varchar" MaxLength="100" />
+          <Property Name="Comentario" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Identificacion" />
+          </Key>
+          <Property Name="Identificacion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Clics__NombreCre__6319B466">
+          <End Role="Creditos" Type="Self.Creditos" Multiplicity="1" />
+          <End Role="Clics" Type="Self.Clics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="Clics">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clientes__idRol__5B78929E">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operacion__idMod__40C49C62">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
+          <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="idModulo" />
+            </Principal>
+            <Dependent Role="Operaciones">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posiciona__Nombr__65F62111">
+          <End Role="Creditos" Type="Self.Creditos" Multiplicity="1" />
+          <End Role="Posicionamiento" Type="Self.Posicionamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="Posicionamiento">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rol_opera__idOpe__44952D46">
+          <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="1" />
+          <End Role="Rol_operacion" Type="Self.Rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operaciones">
+              <PropertyRef Name="idOperaciones" />
+            </Principal>
+            <Dependent Role="Rol_operacion">
+              <PropertyRef Name="idOperacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rol_opera__idRol__43A1090D">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Rol_operacion" Type="Self.Rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Rol_operacion">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinFormal__Ident__6CA31EA0">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="SinFormalizar" Type="Self.SinFormalizar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Identificacion" />
+            </Principal>
+            <Dependent Role="SinFormalizar">
+              <PropertyRef Name="Identificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinFormal__Nombr__6BAEFA67">
+          <End Role="Creditos" Type="Self.Creditos" Multiplicity="1" />
+          <End Role="SinFormalizar" Type="Self.SinFormalizar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="SinFormalizar">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinRegist__Nombr__68D28DBC">
+          <End Role="Creditos" Type="Self.Creditos" Multiplicity="1" />
+          <End Role="SinRegistro" Type="Self.SinRegistro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="SinRegistro">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__Comen__6F7F8B4B">
+          <End Role="Creditos" Type="Self.Creditos" Multiplicity="1" />
+          <End Role="Solicitudes" Type="Self.Solicitudes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="Solicitudes">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__idRol__5E54FF49">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="RegistroSolicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Identificacion" Type="varchar" Mode="In" />
+          <Parameter Name="Monto" Type="decimal" Mode="In" />
+          <Parameter Name="NombreCre" Type="varchar" Mode="In" />
+          <Parameter Name="TasaInteres" Type="decimal" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="PrimerApellido" Type="varchar" Mode="In" />
+          <Parameter Name="SegundoApellido" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="SalarioNeto" Type="decimal" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="idRol" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="BDProyectoAPSWModelStoreContainer">
+          <EntitySet Name="Clics" EntityType="Self.Clics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Creditos" EntityType="Self.Creditos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operaciones" EntityType="Self.Operaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posicionamiento" EntityType="Self.Posicionamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol_operacion" EntityType="Self.Rol_operacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SinFormalizar" EntityType="Self.SinFormalizar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SinRegistro" EntityType="Self.SinRegistro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Solicitudes" EntityType="Self.Solicitudes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Clics__NombreCre__6319B466" Association="Self.FK__Clics__NombreCre__6319B466">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="Clics" EntitySet="Clics" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clientes__idRol__5B78929E" Association="Self.FK__Clientes__idRol__5B78929E">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operacion__idMod__40C49C62" Association="Self.FK__Operacion__idMod__40C49C62">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="Operaciones" EntitySet="Operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posiciona__Nombr__65F62111" Association="Self.FK__Posiciona__Nombr__65F62111">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="Posicionamiento" EntitySet="Posicionamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rol_opera__idOpe__44952D46" Association="Self.FK__Rol_opera__idOpe__44952D46">
+            <End Role="Operaciones" EntitySet="Operaciones" />
+            <End Role="Rol_operacion" EntitySet="Rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rol_opera__idRol__43A1090D" Association="Self.FK__Rol_opera__idRol__43A1090D">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Rol_operacion" EntitySet="Rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinFormal__Ident__6CA31EA0" Association="Self.FK__SinFormal__Ident__6CA31EA0">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="SinFormalizar" EntitySet="SinFormalizar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinFormal__Nombr__6BAEFA67" Association="Self.FK__SinFormal__Nombr__6BAEFA67">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="SinFormalizar" EntitySet="SinFormalizar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinRegist__Nombr__68D28DBC" Association="Self.FK__SinRegist__Nombr__68D28DBC">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="SinRegistro" EntitySet="SinRegistro" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__Comen__6F7F8B4B" Association="Self.FK__Solicitud__Comen__6F7F8B4B">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="Solicitudes" EntitySet="Solicitudes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__idRol__5E54FF49" Association="Self.FK__Usuarios__idRol__5E54FF49">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDProyectoAPSWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BDProyectoAPSWEntities1" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="RegistroSolicitud">
+            <Parameter Name="Identificacion" Mode="In" Type="String" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
+            <Parameter Name="NombreCre" Mode="In" Type="String" />
+            <Parameter Name="TasaInteres" Mode="In" Type="Decimal" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+            <Parameter Name="SegundoApellido" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="SalarioNeto" Mode="In" Type="Decimal" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="idRol" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="RegistroCliente">
+            <Parameter Name="Identificacion" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+            <Parameter Name="SegundoApellido" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="SalarioNeto" Mode="In" Type="Decimal" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="idRol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Clics" EntityType="BDProyectoAPSWModel.Clics" />
+          <EntitySet Name="Clientes" EntityType="BDProyectoAPSWModel.Clientes" />
+          <EntitySet Name="Modulo" EntityType="BDProyectoAPSWModel.Modulo" />
+          <EntitySet Name="Operaciones" EntityType="BDProyectoAPSWModel.Operaciones" />
+          <EntitySet Name="Posicionamiento" EntityType="BDProyectoAPSWModel.Posicionamiento" />
+          <EntitySet Name="Rol_operacion" EntityType="BDProyectoAPSWModel.Rol_operacion" />
+          <EntitySet Name="Roles" EntityType="BDProyectoAPSWModel.Roles" />
+          <EntitySet Name="SinFormalizar" EntityType="BDProyectoAPSWModel.SinFormalizar" />
+          <EntitySet Name="SinRegistro" EntityType="BDProyectoAPSWModel.SinRegistro" />
+          <EntitySet Name="Solicitudes" EntityType="BDProyectoAPSWModel.Solicitudes" />
+          <EntitySet Name="Usuarios" EntityType="BDProyectoAPSWModel.Usuarios" />
+          <AssociationSet Name="FK__Clientes__idRol__5B78929E" Association="BDProyectoAPSWModel.FK__Clientes__idRol__5B78929E">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinFormal__Ident__6CA31EA0" Association="BDProyectoAPSWModel.FK__SinFormal__Ident__6CA31EA0">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="SinFormalizar" EntitySet="SinFormalizar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operacion__idMod__40C49C62" Association="BDProyectoAPSWModel.FK__Operacion__idMod__40C49C62">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="Operaciones" EntitySet="Operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rol_opera__idOpe__44952D46" Association="BDProyectoAPSWModel.FK__Rol_opera__idOpe__44952D46">
+            <End Role="Operaciones" EntitySet="Operaciones" />
+            <End Role="Rol_operacion" EntitySet="Rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rol_opera__idRol__43A1090D" Association="BDProyectoAPSWModel.FK__Rol_opera__idRol__43A1090D">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Rol_operacion" EntitySet="Rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__idRol__5E54FF49" Association="BDProyectoAPSWModel.FK__Usuarios__idRol__5E54FF49">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="Creditos" EntityType="BDProyectoAPSWModel.Creditos" />
+          <AssociationSet Name="FK__Clics__NombreCre__6319B466" Association="BDProyectoAPSWModel.FK__Clics__NombreCre__6319B466">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="Clics" EntitySet="Clics" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posiciona__Nombr__65F62111" Association="BDProyectoAPSWModel.FK__Posiciona__Nombr__65F62111">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="Posicionamiento" EntitySet="Posicionamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinFormal__Nombr__6BAEFA67" Association="BDProyectoAPSWModel.FK__SinFormal__Nombr__6BAEFA67">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="SinFormalizar" EntitySet="SinFormalizar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinRegist__Nombr__68D28DBC" Association="BDProyectoAPSWModel.FK__SinRegist__Nombr__68D28DBC">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="SinRegistro" EntitySet="SinRegistro" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__Comen__6F7F8B4B" Association="BDProyectoAPSWModel.FK__Solicitud__Comen__6F7F8B4B">
+            <End Role="Creditos" EntitySet="Creditos" />
+            <End Role="Solicitudes" EntitySet="Solicitudes" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Clics">
+          <Key>
+            <PropertyRef Name="idClics" />
+          </Key>
+          <Property Name="idClics" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumClics" Type="Int32" Nullable="false" />
+          <Property Name="FechaIndicador" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Creditos" Relationship="BDProyectoAPSWModel.FK__Clics__NombreCre__6319B466" FromRole="Clics" ToRole="Creditos" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Identificacion" />
+          </Key>
+          <Property Name="Identificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PrimerApellido" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SegundoApellido" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SalarioNeto" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Endeudamiento" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="BDProyectoAPSWModel.FK__Clientes__idRol__5B78929E" FromRole="Clientes" ToRole="Roles" />
+          <NavigationProperty Name="SinFormalizar" Relationship="BDProyectoAPSWModel.FK__SinFormal__Ident__6CA31EA0" FromRole="Clientes" ToRole="SinFormalizar" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="idModulo" />
+          </Key>
+          <Property Name="idModulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Operaciones" Relationship="BDProyectoAPSWModel.FK__Operacion__idMod__40C49C62" FromRole="Modulo" ToRole="Operaciones" />
+        </EntityType>
+        <EntityType Name="Operaciones">
+          <Key>
+            <PropertyRef Name="idOperaciones" />
+          </Key>
+          <Property Name="idOperaciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreOperacion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idModulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Modulo" Relationship="BDProyectoAPSWModel.FK__Operacion__idMod__40C49C62" FromRole="Operaciones" ToRole="Modulo" />
+          <NavigationProperty Name="Rol_operacion" Relationship="BDProyectoAPSWModel.FK__Rol_opera__idOpe__44952D46" FromRole="Operaciones" ToRole="Rol_operacion" />
+        </EntityType>
+        <EntityType Name="Posicionamiento">
+          <Key>
+            <PropertyRef Name="idPosicionamiento" />
+          </Key>
+          <Property Name="idPosicionamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumPosicionamiento" Type="Int32" Nullable="false" />
+          <Property Name="FechaIndicador" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Creditos" Relationship="BDProyectoAPSWModel.FK__Posiciona__Nombr__65F62111" FromRole="Posicionamiento" ToRole="Creditos" />
+        </EntityType>
+        <EntityType Name="Rol_operacion">
+          <Key>
+            <PropertyRef Name="idRolOperacion" />
+          </Key>
+          <Property Name="idRolOperacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="idOperacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Operaciones" Relationship="BDProyectoAPSWModel.FK__Rol_opera__idOpe__44952D46" FromRole="Rol_operacion" ToRole="Operaciones" />
+          <NavigationProperty Name="Roles" Relationship="BDProyectoAPSWModel.FK__Rol_opera__idRol__43A1090D" FromRole="Rol_operacion" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clientes" Relationship="BDProyectoAPSWModel.FK__Clientes__idRol__5B78929E" FromRole="Roles" ToRole="Clientes" />
+          <NavigationProperty Name="Rol_operacion" Relationship="BDProyectoAPSWModel.FK__Rol_opera__idRol__43A1090D" FromRole="Roles" ToRole="Rol_operacion" />
+          <NavigationProperty Name="Usuarios" Relationship="BDProyectoAPSWModel.FK__Usuarios__idRol__5E54FF49" FromRole="Roles" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="SinFormalizar">
+          <Key>
+            <PropertyRef Name="idSinFormalizar" />
+          </Key>
+          <Property Name="idSinFormalizar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Identificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FechaIndicador" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Clientes" Relationship="BDProyectoAPSWModel.FK__SinFormal__Ident__6CA31EA0" FromRole="SinFormalizar" ToRole="Clientes" />
+          <NavigationProperty Name="Creditos" Relationship="BDProyectoAPSWModel.FK__SinFormal__Nombr__6BAEFA67" FromRole="SinFormalizar" ToRole="Creditos" />
+        </EntityType>
+        <EntityType Name="SinRegistro">
+          <Key>
+            <PropertyRef Name="idSinRegistro" />
+          </Key>
+          <Property Name="idSinRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumUsuarios" Type="Int32" Nullable="false" />
+          <Property Name="FechaIndicador" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Creditos" Relationship="BDProyectoAPSWModel.FK__SinRegist__Nombr__68D28DBC" FromRole="SinRegistro" ToRole="Creditos" />
+        </EntityType>
+        <EntityType Name="Solicitudes">
+          <Key>
+            <PropertyRef Name="idSolicitud" />
+          </Key>
+          <Property Name="idSolicitud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Monto" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="NombreCre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TasaInteres" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Responsable" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Creditos" Relationship="BDProyectoAPSWModel.FK__Solicitud__Comen__6F7F8B4B" FromRole="Solicitudes" ToRole="Creditos" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Identificacion" />
+          </Key>
+          <Property Name="Identificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PrimerApellido" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SegundoApellido" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="BDProyectoAPSWModel.FK__Usuarios__idRol__5E54FF49" FromRole="Usuarios" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK__Clientes__idRol__5B78929E">
+          <End Type="BDProyectoAPSWModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.Clientes" Role="Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinFormal__Ident__6CA31EA0">
+          <End Type="BDProyectoAPSWModel.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.SinFormalizar" Role="SinFormalizar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Identificacion" />
+            </Principal>
+            <Dependent Role="SinFormalizar">
+              <PropertyRef Name="Identificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operacion__idMod__40C49C62">
+          <End Type="BDProyectoAPSWModel.Modulo" Role="Modulo" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.Operaciones" Role="Operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="idModulo" />
+            </Principal>
+            <Dependent Role="Operaciones">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rol_opera__idOpe__44952D46">
+          <End Type="BDProyectoAPSWModel.Operaciones" Role="Operaciones" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.Rol_operacion" Role="Rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operaciones">
+              <PropertyRef Name="idOperaciones" />
+            </Principal>
+            <Dependent Role="Rol_operacion">
+              <PropertyRef Name="idOperacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rol_opera__idRol__43A1090D">
+          <End Type="BDProyectoAPSWModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.Rol_operacion" Role="Rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Rol_operacion">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__idRol__5E54FF49">
+          <End Type="BDProyectoAPSWModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Creditos">
+          <Key>
+            <PropertyRef Name="NombreCre" />
+          </Key>
+          <Property Name="NombreCre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaximoMonto" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MinimoMonto" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MaximoPlazo" Type="Int32" Nullable="false" />
+          <Property Name="MinimoPlazo" Type="Int32" Nullable="false" />
+          <Property Name="TasaColones" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Categoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TasaDolares" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Clics" Relationship="BDProyectoAPSWModel.FK__Clics__NombreCre__6319B466" FromRole="Creditos" ToRole="Clics" />
+          <NavigationProperty Name="Posicionamiento" Relationship="BDProyectoAPSWModel.FK__Posiciona__Nombr__65F62111" FromRole="Creditos" ToRole="Posicionamiento" />
+          <NavigationProperty Name="SinFormalizar" Relationship="BDProyectoAPSWModel.FK__SinFormal__Nombr__6BAEFA67" FromRole="Creditos" ToRole="SinFormalizar" />
+          <NavigationProperty Name="SinRegistro" Relationship="BDProyectoAPSWModel.FK__SinRegist__Nombr__68D28DBC" FromRole="Creditos" ToRole="SinRegistro" />
+          <NavigationProperty Name="Solicitudes" Relationship="BDProyectoAPSWModel.FK__Solicitud__Comen__6F7F8B4B" FromRole="Creditos" ToRole="Solicitudes" />
+        </EntityType>
+        <Association Name="FK__Clics__NombreCre__6319B466">
+          <End Type="BDProyectoAPSWModel.Creditos" Role="Creditos" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.Clics" Role="Clics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="Clics">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posiciona__Nombr__65F62111">
+          <End Type="BDProyectoAPSWModel.Creditos" Role="Creditos" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.Posicionamiento" Role="Posicionamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="Posicionamiento">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinFormal__Nombr__6BAEFA67">
+          <End Type="BDProyectoAPSWModel.Creditos" Role="Creditos" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.SinFormalizar" Role="SinFormalizar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="SinFormalizar">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinRegist__Nombr__68D28DBC">
+          <End Type="BDProyectoAPSWModel.Creditos" Role="Creditos" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.SinRegistro" Role="SinRegistro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="SinRegistro">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__Comen__6F7F8B4B">
+          <End Type="BDProyectoAPSWModel.Creditos" Role="Creditos" Multiplicity="1" />
+          <End Type="BDProyectoAPSWModel.Solicitudes" Role="Solicitudes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creditos">
+              <PropertyRef Name="NombreCre" />
+            </Principal>
+            <Dependent Role="Solicitudes">
+              <PropertyRef Name="NombreCre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDProyectoAPSWModelStoreContainer" CdmEntityContainer="BDProyectoAPSWEntities1">
+          <FunctionImportMapping FunctionImportName="RegistroSolicitud" FunctionName="BDProyectoAPSWModel.Store.RegistroSolicitud" />
+          <EntitySetMapping Name="Clics">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Clics">
+              <MappingFragment StoreEntitySet="Clics">
+                <ScalarProperty Name="FechaIndicador" ColumnName="FechaIndicador" />
+                <ScalarProperty Name="NumClics" ColumnName="NumClics" />
+                <ScalarProperty Name="NombreCre" ColumnName="NombreCre" />
+                <ScalarProperty Name="idClics" ColumnName="idClics" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Endeudamiento" ColumnName="Endeudamiento" />
+                <ScalarProperty Name="SalarioNeto" ColumnName="SalarioNeto" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modulo">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Modulo">
+              <MappingFragment StoreEntitySet="Modulo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operaciones">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Operaciones">
+              <MappingFragment StoreEntitySet="Operaciones">
+                <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+                <ScalarProperty Name="NombreOperacion" ColumnName="NombreOperacion" />
+                <ScalarProperty Name="idOperaciones" ColumnName="idOperaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posicionamiento">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Posicionamiento">
+              <MappingFragment StoreEntitySet="Posicionamiento">
+                <ScalarProperty Name="FechaIndicador" ColumnName="FechaIndicador" />
+                <ScalarProperty Name="NumPosicionamiento" ColumnName="NumPosicionamiento" />
+                <ScalarProperty Name="NombreCre" ColumnName="NombreCre" />
+                <ScalarProperty Name="idPosicionamiento" ColumnName="idPosicionamiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol_operacion">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Rol_operacion">
+              <MappingFragment StoreEntitySet="Rol_operacion">
+                <ScalarProperty Name="idOperacion" ColumnName="idOperacion" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idRolOperacion" ColumnName="idRolOperacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SinFormalizar">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.SinFormalizar">
+              <MappingFragment StoreEntitySet="SinFormalizar">
+                <ScalarProperty Name="FechaIndicador" ColumnName="FechaIndicador" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="NombreCre" ColumnName="NombreCre" />
+                <ScalarProperty Name="idSinFormalizar" ColumnName="idSinFormalizar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SinRegistro">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.SinRegistro">
+              <MappingFragment StoreEntitySet="SinRegistro">
+                <ScalarProperty Name="FechaIndicador" ColumnName="FechaIndicador" />
+                <ScalarProperty Name="NumUsuarios" ColumnName="NumUsuarios" />
+                <ScalarProperty Name="NombreCre" ColumnName="NombreCre" />
+                <ScalarProperty Name="idSinRegistro" ColumnName="idSinRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Solicitudes">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Solicitudes">
+              <MappingFragment StoreEntitySet="Solicitudes">
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="TasaInteres" ColumnName="TasaInteres" />
+                <ScalarProperty Name="NombreCre" ColumnName="NombreCre" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="idSolicitud" ColumnName="idSolicitud" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Creditos">
+            <EntityTypeMapping TypeName="BDProyectoAPSWModel.Creditos">
+              <MappingFragment StoreEntitySet="Creditos">
+                <ScalarProperty Name="TasaDolares" ColumnName="TasaDolares" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="TasaColones" ColumnName="TasaColones" />
+                <ScalarProperty Name="MinimoPlazo" ColumnName="MinimoPlazo" />
+                <ScalarProperty Name="MaximoPlazo" ColumnName="MaximoPlazo" />
+                <ScalarProperty Name="MinimoMonto" ColumnName="MinimoMonto" />
+                <ScalarProperty Name="MaximoMonto" ColumnName="MaximoMonto" />
+                <ScalarProperty Name="NombreCre" ColumnName="NombreCre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

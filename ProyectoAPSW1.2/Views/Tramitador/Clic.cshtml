@@ -1,0 +1,241 @@
+﻿@model IEnumerable<ProyectoAPSW1._2.Models.TendenciasG>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+<div class="contenedor">
+
+    @if (@ViewBag.rol == 1)
+    {
+        <!--Menu-->
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-4">
+                <div class="container">
+                    <a href="@Url.Action("Index", "Home")#inicio" class="brand-logo">
+                        <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                    </a>
+                    <a href="#" data-target="menu-responsive" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="@Url.Action("Login", "Acceso")" i class="material-icons"
+                               style="vertical-align: middle;">exit_to_app</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="menu-responsive">
+            <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+            <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+            <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+        </ul>
+
+
+    }
+</div>
+
+
+<div class="contenedor">
+
+
+
+
+
+
+    <div class="row">
+        <div class="col s12 m12 l6">
+            <div class="nav-wrapper">
+                <a href="@Url.Action("Principal2", "Principal")" class="breadcrumb">Inicio</a>
+                <a href="@Url.Action("Tendencias", "Principal")" class="breadcrumb">Tendencias</a>
+                <a href="@Url.Action("Clic", "Tramitador")" class="breadcrumb">Clics</a>
+            </div>
+        </div>
+
+        <div class="col s12 m12 l6 center">
+            <ul>
+                <a i class="material-icons" style="vertical-align: middle; color: white;">person</a>
+                <a style="color: white;">@ViewBag.mssg4</a>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="cuadroTablas1">
+
+        <div class="container">
+            <h4 class="center">
+                <a class="btnColor" style="width: auto;">Cantidad total de clics según cada tipo de crédito</a>
+            </h4>
+            <div class="owl-carousel">
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+
+                        <div class="col s12 m6 l3">
+                            <div class="popular">
+
+                                <h5 class="popularText">@Html.DisplayFor(modelItem => item.NombreCre)</h5>
+                                <h5 class="popularNum" id="capital">@Html.DisplayFor(modelItem => item.Count)</h5>
+                            </div>
+                        </div>
+                    }
+                }
+
+                @*<div class="col s12 m6 l3">
+                        <div class="popular">
+                            <img class="Relevantes" src="~/images/avion.png" />
+                            <h5 class="popularText">Compra maquinaria y equipo</h5>
+                            <h5 class="popularNum" id="maquinaria"></h5>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="popular">
+                            <img class="Relevantes" src="~/images/capital.png" />
+                            <h5 class="popularText">Compra vehículo</h5>
+                            <h5 class="popularNum" id="vehiculo"></h5>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="popular">
+                            <img class="Relevantes" src="~/images/activos.png" />
+                            <h5 class="popularText">Compra vivienda</h5>
+                            <h5 class="popularNum" id="vivienda"></h5>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6 l3">
+                        <div class="popular">
+                            <img class="Relevantes" src="~/images/activos.png" />
+                            <h5 class="popularText">Estudios</h5>
+                            <h5 class="popularNum" id="estudios"></h5>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6 l3">
+                        <div class="popular">
+                            <img class="Relevantes" src="~/images/activos.png" />
+                            <h5 class="popularText">Mejora instalaciones</h5>
+                            <h5 class="popularNum" id="instalaciones"></h5>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6 l3">
+                        <div class="popular">
+                            <img class="Relevantes" src="~/images/activos.png" />
+                            <h5 class="popularText">Salud</h5>
+                            <h5 class="popularNum" id="salud"></h5>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6 l3">
+                        <div class="popular">
+                            <img class="Relevantes" src="~/images/activos.png" />
+                            <h5 class="popularText">Unificacion</h5>
+                            <h5 class="popularNum" id="unificacion"></h5>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6 l3">
+                        <div class="popular">
+                            <img class="Relevantes" src="~/images/activos.png" />
+                            <h5 class="popularText">Vehiculo de trabajo</h5>
+                            <h5 class="popularNum" id="vehiculot"></h5>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6 l3">
+                        <div class="popular">
+                            <img class="Relevantes" src="~/images/activos.png" />
+                            <h5 class="popularText">Viajes</h5>
+                            <h5 class="popularNum" id="viajes"></h5>
+                        </div>
+                    </div>*@
+
+            </div>
+        </div>
+
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Clics por rango de fechas</a>
+        </h4>
+        <div class="row">
+            <div class="col s4 m4 l3">
+                <div class="infoBusqueda">
+                    <label style="color: white; font-family: Nunito; font-weight: 500;">Fecha Inicial</label>
+                    <input type="date" id="fechaclic" class="inputbusqueda" style=" background-color: #ffffffe6;">
+
+                </div>
+            </div>
+
+            <div class="col s4 m4 l3">
+                <div class="infoBusqueda">
+                    <label style="color: white; font-family: Nunito; font-weight: 500;">Fecha Final</label>
+                    <input type="date" id="fechaclic1" class="inputbusqueda" style=" background-color: #ffffffe6;">
+
+                </div>
+            </div>
+
+            <div class="col s4 m4 l3">
+                <br />
+                <button type='button' onclick="Clics()" class="waves-effect waves-light btn amber">Buscar</button>
+            </div>
+
+
+        </div>
+
+        <figure class="highcharts-figure">
+            <div id="container"></div>
+
+        </figure>
+
+
+
+
+    </div>
+
+</div>
+@section Scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".owl-carousel").owlCarousel({
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 2000, //2000ms = 2s;
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    600: {
+                        items: 2,
+                    },
+                    1000: {
+                        items: 3,
+                    }
+                }
+            });
+        });
+    </script>
+
+
+}

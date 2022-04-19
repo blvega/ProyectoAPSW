@@ -1,0 +1,51 @@
+﻿
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    
+    <hgroup>
+        <div class="contenedor">
+
+            <!--Menu-->
+            <div class="navbar-fixed">
+                <nav class="light-blue darken-4">
+                    <div class="container">
+                        <a href='@Url.Action("Index", "Home")#inicio' class="brand-logo">
+                            <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                        </a>
+                        <a href="#" data-target="menu-responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+                            <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+                            <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
+                            <li>
+                                <a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)" i class="material-icons" style="vertical-align: middle;">person</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <ul class="sidenav" id="menu-responsive">
+                <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+                <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+                <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+            </ul>
+
+
+
+        </div>
+        <h1>Error.</h1>
+        <h2>An error occurred while processing your request.</h2>
+    </hgroup>
+</body>
+</html>

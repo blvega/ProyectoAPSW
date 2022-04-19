@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1d7ab2d4be2e412596c1e8f3f0e7509a" Name="Diagram1" ZoomLevel="111">
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Clics" Width="1.5" PointX="3" PointY="12.375" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Clientes" Width="1.5" PointX="3.75" PointY="17.75" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Modulo" Width="1.5" PointX="2.25" PointY="26.75" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Operaciones" Width="1.5" PointX="4.5" PointY="26.625" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Posicionamiento" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Rol_operacion" Width="1.5" PointX="6.75" PointY="18.625" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Roles" Width="1.5" PointX="1.5" PointY="18.625" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.SinFormalizar" Width="1.5" PointX="6" PointY="7.5" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.SinRegistro" Width="1.5" PointX="3" PointY="15.125" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Solicitudes" Width="1.5" PointX="3" PointY="5.75" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Usuarios" Width="1.5" PointX="3.75" PointY="22.875" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__Clientes__idRol__5B78929E" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__SinFormal__Ident__6CA31EA0" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__Operacion__idMod__40C49C62" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__Rol_opera__idOpe__44952D46" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__Rol_opera__idRol__43A1090D" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__Usuarios__idRol__5E54FF49" />
+        <EntityTypeShape EntityType="BDProyectoAPSWModel.Creditos" Width="1.5" PointX="0.75" PointY="8.25" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__Clics__NombreCre__6319B466" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__Posiciona__Nombr__65F62111" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__SinFormal__Nombr__6BAEFA67" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__SinRegist__Nombr__68D28DBC" />
+        <AssociationConnector Association="BDProyectoAPSWModel.FK__Solicitud__Comen__6F7F8B4B" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Solicitudes";
+}
+
+
+<div class="container">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a href="@Url.Action("Principal2", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" class="breadcrumb">Inicio</a>
+            <a href="@Url.Action("Solicitudes", null, new { area = string.Empty, controller = "Tramitador" }, Request.Url.Scheme)" class="breadcrumb">Solicitudes</a>
+
+        </div>
+    </div>
+
+    <div class="section">
+
+
+        <div class="row">
+            <div class="col s12">
+                <div class="cuadroSoli">
+                    <div class="row">
+                        <div class="col s12">
+                            <ul class="userName">
+                                <a i class="material-icons"
+                                   style="vertical-align: middle; color: white; margin-left: 600px;">person</a>
+                                <a style="color: white;">@ViewBag.mssg2</a>
+
+                            </ul>
+                        </div>
+                        <div class="col s2">
+
+                        </div>
+                    </div>
+
+                    <div class="container1">
+                        <div class="row">
+                            <div class="col s6">
+                                <a href="entramite.html"><img src="~/images/tramite.png" class="botonAdm"></a>
+                            </div>
+                            <div class="col s6">
+                                <a href="aprobadas.html"><img src="~/images/aprobadas.png" class="botonAdm"></a>
+                            </div>
+                            <div class="col s6">
+                                <a class="botonEtiquetas">En trámite</a>
+                            </div>
+                            <div class="col s6">
+                                <a class="botonEtiquetas">Aprobadas</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cuadroModulo">
+            <p>
+                Este módulo de configuración de solicitudes, tiene como objetivo administrar créditos
+                pendientes y mostrar el historial de aprobados.
+                El acceso a este módulo es exclusivo para el tramitador
+            </p>
+        </div>
+    </div>
+</div>

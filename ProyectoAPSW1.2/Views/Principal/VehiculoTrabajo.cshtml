@@ -1,0 +1,183 @@
+﻿
+@model ProyectoAPSW1._2.Models.CreditosCorreo
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="contenedor">
+
+        @if (@ViewBag.rol == "4")
+        {
+            <!--Menu-->
+            <div class="navbar-fixed">
+                <nav class="light-blue darken-4">
+                    <div class="container">
+                        <a href='@Url.Action("Index", "Home")#inicio' class="brand-logo">
+                            <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                        </a>
+                        <a href="#" data-target="menu-responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+                            <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+                            <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
+                            <li>
+                                <a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)" i class="material-icons" style="vertical-align: middle;">person</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <ul class="sidenav" id="menu-responsive">
+                <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+                <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+                <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+            </ul>
+
+
+        }
+    </div>
+
+    <h4 class="center">
+        <a class="btnColor" style="width: auto;">Vehículo de Trabajo</a>
+    </h4>
+
+    <div class="nav-wrapper">
+        <a href="@Url.Action("Index", "Home")" class="breadcrumb">Inicio</a>
+        @*<a href="@Url.Action("Pymes", "Principal")" class="breadcrumb">Créditos Pymes</a>*@
+        <a href="@Url.Action("VehiculoTrabajo", "Principal")" class="breadcrumb">Vehículo de Trabajo</a>
+    </div>
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col s12 m12 l6">
+                <div class="cuadro-creditos">
+                    <h5 class="aboutCredit">
+                        La eficacia de su empresa es nuestro objetivo,
+                        adquiera el mejor crédito.
+                    </h5>
+                    <br>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <label class="titleCredits">Moneda:</label>
+                            <label class="titleCredits1">Colones - Dolares</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <label class="titleCredits">Finaciamiento:</label>
+                            <label class="titleCredits1">hasta el 80% del valor del vehículo</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <label class="titleCredits">Plazos:</label>
+                            <label class="titleCredits1">Hasta 96 meses (8 años)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <label class="titleCredits">Tasa Interés:</label>
+                            <label class="titleCredits1">Según BCCR</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4 class="center">
+                            <a class="btnColor" style="width: auto;">Requisitos</a>
+                        </h4>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <label class="titleCredits">Nacionalidad:</label>
+                            <label class="titleCredits1">Costarricense</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <label class="titleCredits">Operacionalidad:</label>
+                            <label class="titleCredits1">Mayor de 9 meses</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <label class="titleCredits">Registro:</label>
+                            <label class="titleCredits1">Activo en el MEIC</label>
+                        </div>
+                    </div>
+
+                    <div class="btnSolicitar">
+                        <a href='@Url.Action("Index", "Home")#calculadora'
+                           class="waves-effect waves-light btn light-blue darken-4">Calcular Crédito</a>
+                    </div>
+
+                    <div class="btnSolicitar">
+                        <a onclick="ModalEnvioCorreo('Vehiculo de trabajo')"
+                           class="waves-effect waves-light btn light-blue darken-4">Enviar correo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m12 l6">
+                <img src="~/images/img-VehiculoT.png" class="img-Cred1 ">
+            </div>
+        </div>
+    </div>
+
+    <div id="modalVT" class="modal">
+        <div class="modal-content">
+            <h4 class="center">
+                <a class="btnColor" style="width: auto;">Enviar información a correo</a>
+            </h4>
+            <form class="col s12">
+                <div class="row">
+
+                    <div class="col s12 m6 l6">
+                        @Html.EditorFor(model => model.NombreCre, new
+                   {
+                       htmlAttributes = new
+                       {
+
+                           @Value = "Vehiculo de trabajo",
+                           @class = "datosPersonales",
+                           @style = "background-color: rgba(255, 255, 255, 0.301); width: 90%;margin-left: 5%; color:#01579b ",
+
+                       }
+                   })
+                        @Html.LabelFor(model => model.NombreCre, htmlAttributes: new { @class = "etiquetas" })
+
+
+                    </div>
+
+                    <div class="col s12 m6 l6">
+                        @Html.TextBoxFor(model => model.Correo, new { htmlAttributes = new { @class = "datosLogin", @style = "background - color: rgba(255, 255, 255, 0.301); width: 90 %; margin - left: 5 %; " } })
+                        @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "etiquetas" })
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            @*  <a onclick="('CapitalTrabajo')" class="modal-close btn-small green">Enviar</a>*@
+            <button type='submit' value="VehiculoTrabajo" class="waves-effect waves-light btn light-blue darken-4">Enviar</button>
+
+            <a href="#!" class="modal-close btn-small red">Cancelar</a>
+        </div>
+    </div>
+}

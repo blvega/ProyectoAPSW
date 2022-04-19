@@ -1,0 +1,96 @@
+﻿
+<div class="contenedor">
+
+    @if (@ViewBag.rol == 1)
+    {
+        <!--Menu-->
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-4">
+                <div class="container">
+                    <a href="@Url.Action("Index", "Home")#inicio" class="brand-logo">
+                        <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                    </a>
+                    <a href="#" data-target="menu-responsive" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="@Url.Action("Login", "Acceso")" i class="material-icons"
+                               style="vertical-align: middle;">exit_to_app</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="menu-responsive">
+            <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+            <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+            <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+        </ul>
+
+
+    }
+</div>
+
+<div class="contenedor">
+    
+    <div class="row">
+        <div class="col s6 m12 l6">
+            <div class="nav-wrapper">
+                <a href="@Url.Action("Principal2", "Principal")" class="breadcrumb">Inicio</a>
+                <a href="@Url.Action("Tendencias", "Principal")" class="breadcrumb">Tendencias</a>
+            </div>
+        </div>
+
+        <div class="col s12 m12 l6 center">
+            <ul>
+                <a i class="material-icons" style="vertical-align: middle; color: white;">person</a>
+                <a style="color: white;">@ViewBag.mssg3</a>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="cuadroSoli">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Tendencias</a>
+        </h4>
+
+        <div class="row center">
+            <div class="col s6 m6 l3">
+                <a href="@Url.Action("Clic", null, new { area = string.Empty, controller = "Tramitador" }, Request.Url.Scheme)"><img src="~/images/clics.png" class="botonAdm"></a>
+                <div class="etiquetasBotones">Clics</div>
+            </div>
+
+
+            <div class="col s6 m6 l3">
+                <a href="@Url.Action("Posicionamiento", null, new { area = string.Empty, controller = "Tramitador" }, Request.Url.Scheme)"><img src="~/images/5s.png" class="botonAdm"></a>
+                <div class="etiquetasBotones">Posicionamiento</div>
+            </div>
+
+
+            <div class="col s6 m6 l3">
+                <a href="@Url.Action("SinRegistro", null, new { area = string.Empty, controller = "Tramitador" }, Request.Url.Scheme)"><img src="~/images/sinRegistro.png" class="botonAdm"></a>
+                <div class="etiquetasBotones">Sin Registro</div>
+            </div>
+
+
+            <div class="col s6 m6 l3">
+                <a href="@Url.Action("SinFormalizar", null, new { area = string.Empty, controller = "Tramitador" }, Request.Url.Scheme)"><img src="~/images/registrados.png" class="botonAdm"></a>
+                <div class="etiquetasBotones">Sin formalizar</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cuadroModulo">
+        <p>
+            Este módulo de tendencias permite consultar las predicciones y el historial de las tendencias de
+            clics,
+            posicionamiento, usuarios no registrados, usuarios registrados sin formalización
+            El acceso a este módulo es exclusivo para el tramitador
+        </p>
+
+
+    </div>

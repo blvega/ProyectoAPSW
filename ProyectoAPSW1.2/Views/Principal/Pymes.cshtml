@@ -1,0 +1,93 @@
+﻿
+
+<ul class="sidenav" id="menu-responsive">
+    <li><a href="index.html#inicio">Inicio</a></li>
+    <li><a href="index.html#creditos">Créditos</a></li>
+    <li><a href="index.html#calculadora">Calculadora Créditos</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="login.html">Iniciar Sesión</a></li>
+</ul>
+
+
+<section>
+    <h4 class="center">
+        <a class="btnColor" style="width: auto;">Créditos Pymes</a>
+    </h4>
+
+    <div class="nav-wrapper">
+        <a href=@Url.Action("Index", "Home") class="breadcrumb">Inicio</a>
+        <a href=@Url.Action("Pymes", "Principal") class="breadcrumb">Créditos Pymes</a>
+    </div>
+    <div id="number" style="display:none"></div>
+
+    <div class="container">
+        <div class="row">
+         
+
+            <div class="col s12 m4" onmouseover="IniciarCont('Compra maquinaria y equipo')" onmouseout="DetenerCont()">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="~/images/maquinaria.png" alt="">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>La eficacia de su empresa es nuestro objetivo, adquiera el mejor crédito.</p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                        <a href="@Url.Action("CompraMaquinaria", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Compra maquinaria y equipo')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4" onmouseover="IniciarCont('Mejora de instalaciones')" onmouseout="DetenerCont()">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="~/images/instalaciones.png">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>Adapte sus instalaciones para desempeñar una mejor labor.</p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                        <a href="@Url.Action("MejoraInstalaciones", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Mejora de instalaciones')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m4" onmouseover="IniciarCont('Capital de trabajo')" onmouseout="DetenerCont()">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="~/images/capitalT.png" alt="">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>Adquiera una mayor liquidez para su negocio, y proyectando ganancias.</p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                        <a href="@Url.Action("CapitalTrabajo", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Capital de trabajo')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4" onmouseover="IniciarCont('Vehiculo de trabajo')" onmouseout="DetenerCont()">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="~/images/VehiTrabajo.png">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>La eficacia de su empresa es nuestro objetivo, adquiera el mejor crédito. </p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                        <a href="@Url.Action("VehiculoTrabajo", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Vehiculo de trabajo')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <div class="btnCalcular">
+
+        <a href='@Url.Action("Index", "Home")#calculadora' class="waves-effect waves-light btn amber"
+           style="color: black; font-weight: bold;">Calcular Crédito</a>
+    </div>
+
+
+
+
+</section>

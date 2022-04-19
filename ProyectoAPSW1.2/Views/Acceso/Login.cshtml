@@ -1,0 +1,180 @@
+﻿@model ProyectoAPSW1._2.Models.LoginModelo
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div class="contenedor">
+
+    @if (@ViewBag.rol == "4")
+    {
+        <!--Menu-->
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-4">
+                <div class="container">
+                    <a href='@Url.Action("Index", "Home")#inicio' class="brand-logo">
+                        <img src="~/images/logo.png" height="45" style="vertical-align: middle;">
+                    </a>
+                    <a href="#" data-target="menu-responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+                        <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+                        <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+                        <li>
+                            <a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)" i class="material-icons" style="vertical-align: middle;">person</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="menu-responsive">
+            <li><a href='@Url.Action("Index", "Home")#inicio'>Inicio</a></li>
+            <li><a href='@Url.Action("Index", "Home")#creditos'>Créditos</a></li>
+            <li><a href='@Url.Action("Index", "Home")#calculadora'>Calculadora Créditos</a></li>
+            <li><a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Acceso" }, Request.Url.Scheme)">Iniciar Sesión</a></li>
+        </ul>
+
+
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 class="center">
+            <a class="btnColor" style="width: auto;">Login</a>
+        </h4>
+        <br />
+        <br />
+        <br />
+
+
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="cuadro-login">
+                            <img class="logoLogin" src="~/images/logo.png">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                            <div class="col s12">
+                                @Html.TextBoxFor(model => model.Identificacion, new { htmlAttributes = new { @class = "datosLogin", @style = "background - color: rgba(255, 255, 255, 0.301); width: 90 %; margin - left: 5 %; " } })
+                                @Html.LabelFor(model => model.Identificacion, htmlAttributes: new { @class = "etiquetas" })
+                                @Html.ValidationMessageFor(model => model.Identificacion, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col s12">
+                                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "datosLogin", @Type = "password", @style = "background - color: rgba(255, 255, 255, 0.301); width: 90 %; margin - left: 5 %; " } })
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "etiquetas" })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="btnIngresar">
+                                        <button type='submit' value="Create" class="waves-effect waves-light btn light-blue darken-4">Ingresar</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="btnOlvido">
+                                        <button type='button' onclick="ModalCambiarContraseña()" class="waves-effect waves-light btn amber">Olvidé mi contraseña</button>
+                                    </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+
+
+    <div id="modalContra" class="modal">
+        <div class="modal-content">
+            <h4 class="center">
+                <a class="btnColor" style="width: auto;">Restablecer contraseña</a>
+            </h4>
+           
+                <div class="row">
+                    <div class="col s12 m4 l2">
+
+                    </div>
+                    <div class="col s12 m4 l8">
+                        <input placeholder="Identificación" id="idcontra" type="text" class="validate"
+                               style="color: white;"> <label for="first_name"></label>
+                    </div>
+                    <div class="col s12 m4 l2">
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col s12 m4 l2">
+
+                    </div>
+                    <div class="col s12 m4 l8">
+                        <input placeholder="Correo" id="correo" type="text" class="validate"
+                               style="color: white;"> <label for="first_name"></label>
+                        @*<a id="view" i class="material-icons modal-trigger"
+                           style="vertical-align: middle; color: white;">visibility</a>*@
+
+                    </div>
+
+
+                    <div class="col s12 m4 l2">
+
+                    </div>
+
+                </div>
+
+            
+        </div>
+        <div class="modal-footer">
+            <a onclick="EnviarContra2()" class="modal-close btn-small green">Enviar</a>
+            <a href="#!" class="modal-close btn-small red">Cancelar</a>
+        </div>
+    </div>
+
+
+
+    <script>
+        let password = document.getElementById('contra');
+        let viewPassword = document.getElementById('view');
+        
+        let click = false;
+
+        viewPassword.addEventListener('click', (e) => {
+            if (!click) {
+                password.type = 'text'
+                
+                click = true
+            } else if (click) {
+                password.type = 'password'
+                click = false
+            }
+        })
+    </script>
+
+ 
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

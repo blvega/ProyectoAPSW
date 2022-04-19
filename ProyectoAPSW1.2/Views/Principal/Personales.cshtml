@@ -1,0 +1,120 @@
+﻿
+<ul class="sidenav" id="menu-responsive">
+    <li><a href="index.html#inicio">Inicio</a></li>
+    <li><a href="index.html#creditos">Créditos</a></li>
+    <li><a href="index.html#calculadora">Calculadora Créditos</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="login.html">Iniciar Sesión</a></li>
+</ul>
+
+
+
+
+<section>
+    <h4 class="center">
+        <a class="btnColor" style="width: auto;">Créditos Personales</a>
+    </h4>
+
+    <div class="nav-wrapper">
+        <a href=@Url.Action("Index", "Home") class="breadcrumb">Inicio</a>
+        <a href=@Url.Action("Personales", "Principal") class="breadcrumb">Créditos Personales</a>
+    </div>
+    <div id="number" @*style="display:none"*@ ></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4 l4" >
+                <div class="card"  onmouseover="IniciarCont('Compra vivienda')" onmouseout="DetenerCont()">
+                    <div class="card-image">
+                        <img src="~/images/vivienda.png" alt="">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>Adquiere la vivienda de tus sueños con un crédito a increíbles cuotas.</p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                       
+                         <a href="@Url.Action("Vivienda", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Compra vivienda')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4 l4" onmouseover="IniciarCont('Compra vehículo')" onmouseout="DetenerCont()">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="~/images/vehiculo.png">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>Adquiere el vehículo de tus sueños, y grandes cuotas e intereses.</p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                        <a href="@Url.Action("Vehiculo", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Compra vehículo')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m4 l4" onmouseover="IniciarCont('Viajes')" onmouseout="DetenerCont()">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="~/images/viajes.png">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>Deja de soñar y viaja a tu destino más deseado con el mejor crédito.</p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                        <a href="@Url.Action("Viajes", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Viajes')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4 l4" onmouseover="IniciarCont('Estudios')" onmouseout="DetenerCont()">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="~/images/estudios.png" alt="">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>
+                            Te prestamos para que saqués un técnico, bachillerato, licenciatura, maestría o
+                            doctorado.
+                        </p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                        <a href="@Url.Action("Estudios", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Estudios')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4 l4" onmouseover="IniciarCont('Salud')" onmouseout="DetenerCont()">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="~/images/salud.png">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>Sabemos que la salud es primordial, contamos con crédito ante una emergencia. </p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                        <a href="@Url.Action("Salud", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Salud')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4 l4" onmouseover="IniciarCont('Unificacion')" onmouseout="DetenerCont()" >
+                <div class="card">
+                    <div class="card-image">
+                        <img src="~/images/unificacion.png">
+                    </div>
+                    <div class="card-content" style="text-align: left;">
+                        <p>Adquiera paz y liquidez pagando menos por sus deudas a cuotas increibles.</p>
+                    </div>
+                    <div class="card-action" style="text-align: left;">
+                        <a href="@Url.Action("Unificacion", null, new { area = string.Empty, controller = "Principal" }, Request.Url.Scheme)" onclick="RegistrarClic('Unificacion')">Más Información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btnCalcular">
+
+        <a href='@Url.Action("Index", "Home")#calculadora' class="waves-effect waves-light btn amber"
+           style="color: black; font-weight: bold;">Calcular Crédito</a>
+    </div>
+
+
+
+
+</section>
